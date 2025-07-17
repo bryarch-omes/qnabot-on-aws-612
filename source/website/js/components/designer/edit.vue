@@ -213,7 +213,7 @@ function sanitize(data, type) {
     if (type === 'qna' && sanitizedData.alt?.markdown) {
         sanitizedData.alt.markdown = sanitizeHtml(sanitizedData.alt.markdown, {
             allowedTags: sanitizeHtml.defaults.allowedTags.concat(['iframe', 'details', 'summary']),
-            allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, iframe: ['src', 'title'] },
+            allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, iframe: ['src', 'title'], a: [ 'href', 'target' ] },
         });
         sanitizedData.alt.markdown = sanitizedData.alt.markdown.replace('&gt;', '>');
     }
